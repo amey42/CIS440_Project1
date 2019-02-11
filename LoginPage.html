@@ -18,15 +18,17 @@
     <main>
     	<form action="insert page we will use here">
         <fieldset>
-          <legend>Login to Account</legend>
+          <legend>Login to ASU Account</legend>
           Username: <br>
-          <input type="text" name="userName"><br>
+          <input id="myEmail" type="text" name="ASU Email Address" placeholder="Type ASU Email address"><br>
           Password: <br>
-          <input type="text" name="pWord">
+          <input id="myPassword" type="text" name="pWord" placeholder="Type Password">
           <br>
-          <input type="submit" name="Login">
           </fieldset>
         </form>
+        <div>
+          <button id="submitButton" value="Sign In" onclick="submit()" class="buttonText">Sign In</button></div>
+        </div>
     </main>
 
     <footer>
@@ -34,7 +36,10 @@
     	<hr>
     	ScrumLord Technologies - <em>Login Page Test</em>
     </footer>
-
+    
+    <script type="text/javascript" src="LoginPage.js"></script>
+    <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+<!--     <script type="text/javascript" src="mysql.js"></script> -->
    </body>
 
 </html>
