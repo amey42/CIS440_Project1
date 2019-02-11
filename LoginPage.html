@@ -7,7 +7,7 @@
     <title>Restauranteer</title>
    </head>
 
-   <body>
+   <body onload="initialize()">
 
    	<header>
    		<h1>Restauranteer</h1>
@@ -27,7 +27,7 @@
           </fieldset>
         </form>
         <div>
-          <button id="submitButton" value="Sign In" onclick="submit()" class="buttonText">Sign In</button></div>
+          <button id="submitButton" value="Sign In" onclick="submit(this.form)" class="buttonText">Sign In</button></div>
         </div>
     </main>
 

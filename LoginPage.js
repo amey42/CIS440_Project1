@@ -3,12 +3,16 @@ var db_port     = "3306"						// port
 var db_username = "scrumlords"; 				// login name
 var db_password = "!!Cis440"; 					// login password
 var db_table 	= "user"; 						// database to use
-var selectStmt  = "SELECT Cust_email, Cust_password FROM user";
+var selectStmt  = "";
 var id = document.getElementById("myEmail");
 var password = document.getElementById("myPassword");
 var mysql = require('mysql');
 var express = require('express');
 var session = require('express-session');
+
+var tempUsername = 0;
+var tempPassword = 0;
+var inputValid = false;
 
 var connection = mysql.createConnection({
   host     : 'localhost:3306',
@@ -18,24 +22,38 @@ var connection = mysql.createConnection({
   database : 'restauranteer'
 });
 
+function initialize(){
+	connection.connect();
+}
 
+function submit(form){
 
-// function submit(){
-// 	connection.connect();
-// }
+	tempUsername = document.getElementById('myEmail').value;
+	tempPassword = document.getElementById('myPassword').value;
 
-// function processQueryResult(returned){
-// 	if (!returned.Success) {
-// 		alert("Please enter existing ASU Email and Password");
-// 	}
-// 	else{
-// 		if (returned.Result[0].Cust_password == password.value 
-// 		 && returned.Result[0].Cust_email == id.value) {
-// 			//*Display next page*
-// 			alert("Login Successful")
-// 		}
-// 		else{
-// 			alert("Please enter existing ASU ID and Password");
-// 		}
-// 	}
-// }
+	selectStmt = "Select * from user where Cust_email = '" + tempUsername + "' and Cust_password = '" + tempPassword + "';";
+
+	runQuery();
+}
+
+function runQuery() {
+
+		MySql.Execute(
+			db_server,				// mySQL server
+			db_username, 				// login name
+			db_password, 			// login password
+			"restauranteer", 			// database to use
+									// SQL query string:
+			selectStmt,
+	        function (data) {
+	        	console.log(data);
+	        	if(data.Result.length==[0]) 
+	        		{inputValid=false;
+	        			alert("Please enter valid email and password");}
+	        			else
+	        				{inputValid=true;
+	        			alert("login successful!")}
+	    	}
+	    );
+
+   }
