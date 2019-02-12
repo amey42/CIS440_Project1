@@ -34,6 +34,8 @@ function submit(form){
 	selectStmt = "Select * from user where Cust_email = '" + tempUsername + "' and Cust_password = '" + tempPassword + "';";
 
 	runQuery();
+
+
 }
 
 function runQuery() {
@@ -52,7 +54,10 @@ function runQuery() {
 	        			alert("Please enter valid email and password");}
 	        			else
 	        				{inputValid=true;
-	        			alert("login successful!")}
+	        			alert("login successful!")
+	        			window.location.href = "RedirectPage.html";
+
+	        		}
 	    	}
 	    );
 
