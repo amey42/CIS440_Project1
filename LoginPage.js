@@ -1,3 +1,5 @@
+
+
 var db_server 	= "scrumlords.cis440.com";		// mySQL server
 var db_port     = "3306"						// port
 var db_username = "scrumlords"; 				// login name
@@ -56,9 +58,26 @@ function runQuery() {
 	        				{inputValid=true;
 	        			alert("login successful!")
 	        			window.location.href = "RedirectPage.html";
-
-	        		}
+        		}
 	    	}
 	    );
 
+   }
+
+   function createNewAccount()
+   {
+   		var fname = document.getElementByName('fname');
+   		var lname = document.getElementByName('lname');
+   		var email = document.getElementByName('email');
+   		var password = document.getElementByName('password');
+
+   		// code to pass variables to web services to see if email already exists
+   		// if it does not exist, call method to create new entry in db and navigate to homepage
+   		console.log(fname);
+   		console.log(lname);
+   		console.log(email);
+   		console.log(password);
+   		debugger;
+
+   		// window.location='./loginPage.html'
    }
