@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+
+   <head>
+    <link rel="stylesheet" href="loginPage.css">    
+    <title>Restauranteer</title>
+   </head>
+
+   <body>
+
+   	<header>
+   		<h1>Create Account</h1>
+      <hr>
+   	</header>
+    
+    <main>
+		<form>
+			<label>First Name:</label>
+			<input type="text" name="fname"><br>
+			<label>Last Name:</label>
+			<input type="text" name="lname"><br>
+			<label>Email:</label>
+			<input type="text" name="email"><br>
+			<label>Password:</label>
+			<input type="password" name="password"><br>
+			<label>Confirm Password:</label>
+			<input type="password" name="confirmpassword"><br><br>
+			<button id="createAccountBtn" onclick="createNewAccount()">Create Account</button>
+
+		</form>
+    </main>
+
+    <footer>
+    	<br>
+    	<hr>
+    	ScrumLord Technologies - <em>Login Page Test</em>
+    </footer>
+    
+    <script type="text/javascript" src="LoginPage.js"></script>
+    <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+<!--     <script type="text/javascript" src="mysql.js"></script> -->
+   </body>
+
+</html>
