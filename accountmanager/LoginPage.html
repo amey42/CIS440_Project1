@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
 
    <head>
@@ -7,40 +6,38 @@
     <title>Restauranteer</title>
    </head>
 
-   <body onload="initialize()">
+   <body>
+       <header>
+           <h1>Restauranteer</h1>
+           <hr>
+       </header>
 
-   	<header>
-   		<h1>Restauranteer</h1>
-      <hr>
-   	</header>
-    
+       <main>
+           <form onsubmit="LogOn($('#logonId').val(), $('#logonPassword').val()); return false;">
 
-    <main>
-    	<form action="insert page we will use here">
-        <fieldset>
-          <legend>Login to ASU Account</legend>
-          Username: <br>
-          <input id="myEmail" type="text" name="ASU Email Address" placeholder="Type ASU Email address"><br>
-          Password: <br>
-          <input id="myPassword" type="text" name="pWord" placeholder="Type Password">
-          <br>
-          </fieldset>
-        </form>
-        <div>
-          <button id="submitButton" value="Sign In" onclick="submit(this.form)" class="buttonText">Sign In</button><br><br>
-          <button id="goToCreateAccount" onclick="window.location='./CreateAccount.html'">Create Account</button>
-        </div>
-    </main>
+               <fieldset>
+                   <legend>Login to ASU Account</legend>
+                   Username: <br>
+                   <input id="logonId" type="text" name="ASU Email Address" placeholder="Type ASU Email address"><br>
+                   Password: <br>
+                   <input id="logonPassword" type="password" name="pWord" placeholder="Type Password">
+                   <br>
+               </fieldset>
+               <!--<button id="submitButton" value="Sign In" onclick="LogOn()" class="buttonText">Sign In</button><br><br>-->
+               <button type="submit">Sign In</button>
+               <button id="goToCreateAccount" onclick="window.location='./CreateAccount.html'">Create Account</button>
+           </form>
+       </main>
 
-    <footer>
-    	<br>
-    	<hr>
-    	ScrumLord Technologies - <em>Login Page Test</em>
-    </footer>
-    
-    <script type="text/javascript" src="LoginPage.js"></script>
-    <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
-<!--     <script type="text/javascript" src="mysql.js"></script> -->
+       <footer>
+           <br>
+           <hr>
+           ScrumLord Technologies - <em>Login Page Test</em>
+       </footer>
+
+       <script type="text/javascript" src="LoginPage.js"></script>
+       <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    </body>
 
 </html>
