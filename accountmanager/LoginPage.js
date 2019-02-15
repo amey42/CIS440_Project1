@@ -61,24 +61,7 @@
 //        		}
 //	    	}
 //	    );
-
 //   }
-
-   function createNewAccount()
-   {
-        var fname = document.getElementByName('fname');
-        var lname = document.getElementByName('lname');
-        var email = document.getElementByName('email');
-        var password = document.getElementByName('password');
-
-        // code to pass variables to web services to see if email already exists
-        // if it does not exist, call method to create new entry in db and navigate to homepage
-        console.log(fname);
-        console.log(lname);
-        console.log(email);
-        console.log(password);
-        // window.location='./loginPage.html'
-    }
 
     function LogOn(uid, pass)
     {
@@ -99,23 +82,27 @@
             dataType: "json",
             //jQuery sends the data and asynchronously waits for a response.  when it
             //gets a response, it calls the function mapped to the success key here
-            success: function (msg) {
+            success: function (msg)
+            {
                 //the server response is in the msg object passed in to the function here
                 //since our logon web method simply returns a true/false, that value is mapped
                 //to a generic property of the server response called d (I assume short for data
                 //but honestly I don't know...)
-                if (msg.d) {
+                if (msg.d)
+                {
                     //server replied true, so show the accounts panel
                     alert("success!");
                     window.location = './RedirectPage.html';
                 }
-                else {
+                else
+                {
                     //server replied false, so let the user know
                     //the logon failed
                     alert("logon failed");
                 }
             },
-            error: function (e) {
+            error: function (e)
+            {
                 //if something goes wrong in the mechanics of delivering the
                 //message to the server or the server processing that message,
                 //then this function mapped to the error key is executed rather
@@ -126,3 +113,28 @@
         });
 
     }
+
+//passes account info to the server, to create an account request
+    function CreateAccount(id, pass, fname, lname)
+    {
+        var webMethod = "AccountServices.asmx/RequestAccount";
+        var parameters = "{\"uid\":\"" + encodeURI(id) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstName\":\"" + encodeURI(fname) + "\",\"lastName\":\"" + encodeURI(lname) + "\"}";
+
+        $.ajax({
+            type: "POST",
+            url: webMethod,
+            data: parameters,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg)
+            {
+                alert("Success");
+            },
+            error: function (e)
+            {
+                alert("boo...");
+            }
+        });
+        window.location = "./LoginPage.html";
+    }
+

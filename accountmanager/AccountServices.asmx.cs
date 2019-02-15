@@ -81,13 +81,13 @@ namespace accountmanager
 
 		//EXAMPLE OF AN INSERT QUERY WITH PARAMS PASSED IN.  BONUS GETTING THE INSERTED ID FROM THE DB!
 		[WebMethod(EnableSession = true)]
-		public void RequestAccount(string uid, string pass, string firstName, string lastName, string email)
+		public void RequestAccount(string uid, string pass, string firstName, string lastName)
 		{
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
 			//does is tell mySql server to return the primary key of the last inserted row.
-			string sqlSelect = "insert into account (userid, pass, firstname, lastname, email) " +
-				"values(@idValue, @passValue, @fnameValue, @lnameValue, @emailValue); SELECT LAST_INSERT_ID();";
+			string sqlSelect = "insert into user (Cust_email, Cust_password, fname, lname) " +
+				"values(@idValue, @passValue, @fnameValue, @lnameValue); SELECT LAST_INSERT_ID();";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -96,7 +96,6 @@ namespace accountmanager
 			sqlCommand.Parameters.AddWithValue("@passValue", HttpUtility.UrlDecode(pass));
 			sqlCommand.Parameters.AddWithValue("@fnameValue", HttpUtility.UrlDecode(firstName));
 			sqlCommand.Parameters.AddWithValue("@lnameValue", HttpUtility.UrlDecode(lastName));
-			sqlCommand.Parameters.AddWithValue("@emailValue", HttpUtility.UrlDecode(email));
 
 			//this time, we're not using a data adapter to fill a data table.  We're just
 			//opening the connection, telling our command to "executescalar" which says basically

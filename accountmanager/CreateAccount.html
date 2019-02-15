@@ -9,37 +9,38 @@
 
    <body>
 
-   	<header>
-   		<h1>Create Account</h1>
-      <hr>
-   	</header>
-    
-    <main>
-		<form>
-			<label>First Name:</label>
-			<input type="text" name="fname"><br>
-			<label>Last Name:</label>
-			<input type="text" name="lname"><br>
-			<label>Email:</label>
-			<input type="text" name="email"><br>
-			<label>Password:</label>
-			<input type="password" name="password"><br>
-			<label>Confirm Password:</label>
-			<input type="password" name="confirmpassword"><br><br>
-			<button id="createAccountBtn" onclick="createNewAccount()">Create Account</button>
+       <header>
+           <h1>Create Account</h1>
+           <hr>
+       </header>
 
-		</form>
-    </main>
+       <main>
+           <form onsubmit="CreateAccount($('#newLogonId').val(), $('#newLogonPassword').val(), $('#newLogonFName').val(), $('#newLogonLName').val()); return false;">
+               <label>First Name:</label>
+               <input type="text" id="newLogonFName"><br>
 
-    <footer>
-    	<br>
-    	<hr>
-    	ScrumLord Technologies - <em>Login Page Test</em>
-    </footer>
-    
-    <script type="text/javascript" src="LoginPage.js"></script>
-    <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
-<!--     <script type="text/javascript" src="mysql.js"></script> -->
+               <label>Last Name:</label>
+               <input type="text" id="newLogonLName"><br>
+
+               <label>Email:</label>
+               <input type="text" id="newLogonId"><br>
+
+               <label>Password:</label>
+               <input type="password" id="newLogonPassword"><br>
+
+               <button type="submit">Create Account</button>
+           </form>
+       </main>
+
+       <footer>
+           <br>
+           <hr>
+           ScrumLord Technologies - <em>Login Page Test</em>
+       </footer>
+
+       <script type="text/javascript" src="LoginPage.js"></script>
+       <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    </body>
 
 </html>
