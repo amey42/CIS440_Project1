@@ -113,6 +113,7 @@ namespace accountmanager
 				//the database!
 			}
 			catch (Exception e) {
+
 			}
 			sqlConnection.Close();
 		}

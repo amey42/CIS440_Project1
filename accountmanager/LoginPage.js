@@ -129,12 +129,13 @@
             success: function (msg)
             {
                 alert("Success");
+                window.location = "./LoginPage.html";
             },
             error: function (e)
             {
                 alert("boo...");
             }
         });
-        window.location = "./LoginPage.html";
+
     }
 
