@@ -1,0 +1,45 @@
+* {
+	font-family: 'Raleway', sans-serif;
+	margin: 0;
+  	box-sizing: border-box;
+  	font-weight: bold;
+}
+
+body {
+	height: 100vh;
+	text-align: center;
+}
+
+header {
+	height: 10vh;
+	background-color: #565656;
+	text-align: left;
+}
+h1{
+	font-size: 8vh;
+	vertical-align: text-top;
+	color: white;
+}
+
+
+footer {
+	height: 10vh;
+	color: #565656;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+main {
+	height: 70vh;
+
+}
+
+a{
+	text-decoration: none;
+}
+
+#logo{
+	height: 6vh;
+	vertical-align: baseline;
+}
