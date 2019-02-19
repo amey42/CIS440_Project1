@@ -138,11 +138,12 @@
         });
 
     }
-    function AddRestaurant(name, type, score_food, score_atmo, score_service, comments, phone, email, address, city, state, zip, tried)
+function AddRestaurant(name, type, address, city, state, zip, comments)
+    //score_food, score_atmo, score_service,phone, email, tried
     {
         var webMethod = "AccountServices.asmx/AddRestaurant";
-        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) + "\",\"comments\":\"" + encodeURI(comments) + "\",\"phone\":\"" + encodeURI(phone) + "\",\"email\":\"" + encodeURI(email) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"tried\":\"" + encodeURI(tried) + "\"}";
-
+        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\", \"comments\":\"" + encodeURI(comments) + "\"}";
+        //"\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) ++ "\",\"phone\":\"" + encodeURI(phoemail\":\"" + encodeURI(email) + "\",\"tried\":\"" + encodeURI(tried)
         console.log(parameters);
 
         $.ajax({

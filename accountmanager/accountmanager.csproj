@@ -77,11 +77,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountIcon2.png" />
     <Content Include="AccountServices.asmx" />
+    <Content Include="add-rest-totry.html" />
     <Content Include="CreateAccount.html" />
+    <Content Include="css-addtotry.css" />
+    <Content Include="css-home-try.css" />
     <Content Include="Global.asax" />
+    <Content Include="homepage-try.html" />
     <Content Include="index.html" />
     <Content Include="LoginPage.html" />
+    <Content Include="logo-1.png" />
+    <Content Include="logo.png" />
+    <Content Include="logoffImage.png" />
+    <Content Include="redirectPage.css" />
     <Content Include="RedirectPage.html" />
     <Content Include="scripts.js" />
     <Content Include="styles.css" />
