@@ -3,30 +3,24 @@
 <html>
 
    <head>
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">   
     <title>Restauranteer</title>
    </head>
 
    <body>
-
+    <img src="restaurantphoto.jpg" id="background">
        <header>
-           <h1>Create Account</h1>
-           <hr>
+           <a href="loginPage.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
        </header>
 
        <main>
            <form onsubmit="CreateAccount($('#newLogonId').val(), $('#newLogonPassword').val(), $('#newLogonFName').val(), $('#newLogonLName').val()); return false;">
-               <label>First Name:</label>
-               <input type="text" id="newLogonFName"><br>
-
-               <label>Last Name:</label>
-               <input type="text" id="newLogonLName"><br>
-
-               <label>Email:</label>
-               <input type="text" id="newLogonId"><br>
-
-               <label>Password:</label>
-               <input type="password" id="newLogonPassword"><br>
+               <h2>Create Account</h2>          
+               <input type="text" id="newLogonFName" placeholder=" First Name"><br><br>
+               <input type="text" id="newLogonLName" placeholder=" Last Name"><br><br>
+               <input type="text" id="newLogonId" placeholder=" Email"><br><br>
+               <input type="password" id="newLogonPassword" placeholder=" Password"><br><br>
 
                <button type="submit">Create Account</button>
            </form>
@@ -34,7 +28,6 @@
 
        <footer>
            <br>
-           <hr>
            ScrumLord Technologies - <em>Login Page Test</em>
        </footer>
 
