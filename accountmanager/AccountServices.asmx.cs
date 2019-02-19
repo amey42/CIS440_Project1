@@ -127,9 +127,10 @@ namespace accountmanager
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
             //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
             //does is tell mySql server to return the primary key of the last inserted row.
-            string sqlSelect = "insert into restaurant (name, type, address, city, state, zip, comments, user) " +
-                "values(@name, @type, @address, @city, @state, @zip, @comments, @user); SELECT LAST_INSERT_ID();";
-            
+
+            string sqlSelect = "insert into restaurant (name, type, address, city, state, zip, comments) " +
+                "values(@name, @type, @address, @city, @state, @zip, @comments); SELECT LAST_INSERT_ID();";
+
             //score_food, score_atmo, score_service, tried, phone, email
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
             MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -148,7 +149,7 @@ namespace accountmanager
             sqlCommand.Parameters.AddWithValue("@zip", HttpUtility.UrlDecode(Convert.ToString(zip)));
             //sqlCommand.Parameters.AddWithValue("@tried", HttpUtility.UrlDecode(Convert.ToString(tried)));
             sqlCommand.Parameters.AddWithValue("@comments", HttpUtility.UrlDecode(comments));
-            sqlCommand.Parameters.AddWithValue("@user", "scrumlords@asu.edu"); //get username from current session
+            //sqlCommand.Parameters.AddWithValue("@user", "scrumlords@asu.edu"); //get username from current session
 
             sqlConnection.Open();
 
