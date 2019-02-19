@@ -2,40 +2,42 @@
 <html>
 
    <head>
-    <link rel="stylesheet" href="loginPage.css">    
+    <link rel="stylesheet" href="loginPage.css">  
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
     <title>Restauranteer</title>
    </head>
 
-   <body>
+   <body>          
+    <img src="restaurantphoto.jpg" id="background">
        <header>
-           <h1>Restauranteer</h1>
-           <hr>
+
+           <h1><img src="logo.png" id="logo">Restauranteer</h1>
        </header>
 
        <main>
            <form onsubmit="LogOn($('#logonId').val(), $('#logonPassword').val()); return false;">
 
                <fieldset>
-                   <legend>Login to ASU Account</legend>
-                   Username: <br>
-                   <input id="logonId" type="text" name="ASU Email Address" placeholder="Type ASU Email address"><br>
-                   Password: <br>
-                   <input id="logonPassword" type="password" name="pWord" placeholder="Type Password">
+                   <legend></legend>
+                   LOG IN <br>
+                   <input id="logonId" type="text" name="ASU Email Address" placeholder=" Email">
                    <br>
+                   
+                   <input id="logonPassword" type="password" name="pWord" placeholder=" Password">
                </fieldset>
                <!--<button id="submitButton" value="Sign In" onclick="LogOn()" class="buttonText">Sign In</button><br><br>-->
-               <button type="submit">Sign In</button>
-               <button id="goToCreateAccount" onclick="window.location='./CreateAccount.html'">Create Account</button>
+               <button type="submit"> Sign In </button> <br><br>
+               <button id="goToCreateAccount" onclick="window.location='./CreateAccount.html'"> Create Account </button>
            </form>
        </main>
 
        <footer>
            <br>
-           <hr>
-           ScrumLord Technologies - <em>Login Page Test</em>
+           <em>ScrumLord Technologies</em>
        </footer>
 
-       <script type="text/javascript" src="scripts.js"></script>
+       <script type="text/javascript" src="LoginPage.js"></script>
        <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    </body>
