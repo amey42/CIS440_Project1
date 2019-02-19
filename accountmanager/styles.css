@@ -1,11 +1,86 @@
-body{
-	background-image: linear-gradient(to bottom right, #E1EFF6, #97D2FB, #83BCFF);
+* {
+	font-family: 'Raleway', sans-serif;
+	margin: 0;
+  	box-sizing: border-box;
+  	font-weight: bold;
+}
+
+body {
+	height: 100vh;
 	text-align: center;
-	font-family: sans-serif;
+}
+
+header {
+	height: 30vh;
+}
+h1{
+	font-size: 20vh;
+	vertical-align: text-top;
+	color: white;
+}
+#background{
+	width: 100vw;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -1;	
+}
+
+#logo{
+	height: 15vh;
+	vertical-align: baseline;
+}
+
+footer {
+	height: 10vh;
+	color: #565656;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+main {
+	height: 60vh;
+
 }
 
 form {
 	margin: 5%;
     display: inline-block;
-    background-color: #E1EFF6;
+}
+
+fieldset, h2{
+	border-style: none;
+	color: #76323F;
+	font-weight: bolder;
+	font-size: 8vh;
+}
+
+input{
+	font-size: 4vh;
+	height: 5vh;
+	width: 25vw;
+	border-style: none;
+	font-style: italic;
+	border-radius: 15px;
+}
+
+button{
+	border-style: none;
+	background-color: rgba(118,50,63,.75);
+	color: white;
+	border-radius: 5px;
+	font-size: 4vh;
+	height: 5vh;
+}
+
+#goToCreateAccount{
+	background-color: rgba(255,255,255,.75);
+	color: #76323F;
+	height: 3vh;
+	font-size: 2vh;
+}
+
+a{
+	text-decoration: none;
 }
