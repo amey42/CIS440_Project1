@@ -138,4 +138,32 @@
         });
 
     }
+    function AddRestaurant(name, type, score_food, score_atmo, score_service, comments, phone, email, address, city, state, zip, tried)
+    {
+        var webMethod = "AccountServices.asmx/AddRestaurant";
+        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) + "\",\"comments\":\"" + encodeURI(comments) + "\",\"phone\":\"" + encodeURI(phone) + "\",\"email\":\"" + encodeURI(email) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"tried\":\"" + encodeURI(tried) + "\"}";
+
+        console.log(parameters);
+
+        $.ajax({
+            type: "POST",
+            url: webMethod,
+            data: parameters,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg)
+            {
+                alert("Success");
+                window.location = "./homepage-try.html";
+            },
+            error: function (e)
+            {
+                alert("Server error");
+            }
+        });
+
+    }
+
+
+
 

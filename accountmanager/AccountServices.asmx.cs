@@ -118,8 +118,55 @@ namespace accountmanager
 			sqlConnection.Close();
 		}
 
-		//EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
-		[WebMethod(EnableSession = true)]
+
+        //Method to add restaurant to database
+        [WebMethod(EnableSession = true)]
+        public void AddRestaurant(string name, string type, int score_food, int score_atmo, int score_service, string comments, string phone, string email, string address, string city, string state, int zip, bool tried)
+        {
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
+            //does is tell mySql server to return the primary key of the last inserted row.
+            string sqlSelect = "insert into restaurant (name, type, score_food, score_atmo, score_service, comments, user, phone, email, address, city, state, zip, tried) " +
+                "values(@name, @type, @score_food, @score_atmo, @score_service, @comments, @user, @phone, @email, @address, @city, @state, @zip, @tried); SELECT LAST_INSERT_ID();";
+
+            MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+            MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+
+            sqlCommand.Parameters.AddWithValue("@name", HttpUtility.UrlDecode(name));
+            sqlCommand.Parameters.AddWithValue("@type", HttpUtility.UrlDecode(type));
+            sqlCommand.Parameters.AddWithValue("@score_food", HttpUtility.UrlDecode(Convert.ToString(score_food)));
+            sqlCommand.Parameters.AddWithValue("@score_atmo", HttpUtility.UrlDecode(Convert.ToString(score_atmo)));
+            sqlCommand.Parameters.AddWithValue("@score_service", HttpUtility.UrlDecode(Convert.ToString(score_service)));
+            sqlCommand.Parameters.AddWithValue("@comments", HttpUtility.UrlDecode(comments));
+            sqlCommand.Parameters.AddWithValue("@user", "scrumlords@asu.edu"); //get username from current session
+            sqlCommand.Parameters.AddWithValue("@phone", HttpUtility.UrlDecode(phone));
+            sqlCommand.Parameters.AddWithValue("@email", HttpUtility.UrlDecode(email));
+            sqlCommand.Parameters.AddWithValue("@address", HttpUtility.UrlDecode(address));
+            sqlCommand.Parameters.AddWithValue("@city", HttpUtility.UrlDecode(city));
+            sqlCommand.Parameters.AddWithValue("@state", HttpUtility.UrlDecode(state));
+            sqlCommand.Parameters.AddWithValue("@zip", HttpUtility.UrlDecode(Convert.ToString(zip)));
+            sqlCommand.Parameters.AddWithValue("@tried", HttpUtility.UrlDecode(Convert.ToString(tried)));
+
+            sqlConnection.Open();
+
+            try
+            {
+                int accountID = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                //here, you could use this accountID for additional queries regarding
+                //the requested account.  Really this is just an example to show you
+                //a query where you get the primary key of the inserted row back from
+                //the database!
+            }
+            catch (Exception e)
+            {
+
+            }
+            sqlConnection.Close();
+        }
+
+        //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
+        [WebMethod(EnableSession = true)]
 		public Account[] GetAccounts()
 		{
 			//check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
@@ -218,14 +265,6 @@ namespace accountmanager
 				sqlConnection.Close();
 			}
 		}
-
-
-
-
-
-
-
-
 
 		//EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
 		[WebMethod(EnableSession = true)]
