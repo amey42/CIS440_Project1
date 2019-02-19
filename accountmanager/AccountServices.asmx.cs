@@ -121,7 +121,7 @@ namespace accountmanager
 
         //Method to add restaurant to database
         [WebMethod(EnableSession = true)]
-        public void AddRestaurant(string name, string type, string address, string city, string state, int zip, string comments)
+        public void AddRestaurant(string name, string type, string address, string city, string state, string zip, string comments)
         //int score_food, int score_atmo, int score_service, string phone, string email, bool tried
         {
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
