@@ -81,10 +81,10 @@
     <Content Include="CreateAccount.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="loginPage.css" />
     <Content Include="LoginPage.html" />
-    <Content Include="LoginPage.js" />
     <Content Include="RedirectPage.html" />
+    <Content Include="scripts.js" />
+    <Content Include="styles.css" />
     <Content Include="testConnection.js" />
     <Content Include="Web.config" />
   </ItemGroup>
