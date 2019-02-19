@@ -1,38 +1,66 @@
-
-body{
-	background:#FFFFE0;
-}
-
-header, main, footer{
-	
-	}
-
-
-
 header.container, main.container,
 footer.container{
-	margin:auto;
-	
+  margin:auto;
+  
 }
 
 
-header{
-	background: #FFFFE0;
-	overflow:auto;
+* {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+}
 
-	height: 200px;
+body {
+  height: 100vh;
+  text-align: center;
+}
+
+header {
+  height: 10vh;
+  background-color: #565656;
+  text-align: left;
+}
+h1{
+  font-size: 8vh;
+  vertical-align: text-top;
+  color: white;
+}
+
+
+footer {
+  height: 10vh;
+  color: #565656;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  height: 70vh;
 
 }
 
-header h1{
-	float:left;
-	height: 60px;
+a{
+  text-decoration: none;
+}
+
+#logo{
+  height: 6vh;
+  vertical-align: baseline;
+}
+
+#logoffButton
+{
+  height: 6vh;
+  vertical-align: middle;
 }
 
 header nav{
-	float: left;
-	width: 1780px;
-	
+  float: left;
+  width: 100%;
+  
 }
 
 header ul {
@@ -59,7 +87,7 @@ li a, .dropbtn {
 
 
 li a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #76323F;
 }
 
 
@@ -92,32 +120,5 @@ li.dropdown {
 
 
 
-main{
-background:white;
-
-}
-
-main img{
-	float:right;
-	height: 300px;
-	width: 275px;
-}
-
-footer ul{
-	float:right;
-}
-
-img {
-	width: 40px;
-	height: 50px;
-	
-
-}
-
-h1 img {
-	
-	width: 75px;
-	height: 60px;
-}
 
 

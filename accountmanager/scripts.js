@@ -92,7 +92,7 @@
                 {
                     //server replied true, so show the accounts panel
                     alert("success!");
-                    window.location = './RedirectPage.html';
+                    window.location = './homepage-try.html';
                 }
                 else
                 {
