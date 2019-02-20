@@ -16,9 +16,8 @@ href="css-addtotry.css">
         <div class="container">
 
             <nav>
-
+                <h1> <img src="logo-1.png"> </h1>
                 <ul>
-                    <h1> <img src="logo-1.png"> </h1>
                     <li><a href="homepage-try.html">Home</a>|</li>
                     <li><a href="#">About Us</a>|</li>
 
@@ -46,7 +45,7 @@ href="css-addtotry.css">
     <main>
         <div class="container">
             <!--<form action="action_page.php">-->
-            <form onsubmit="AddRestaurant($('#rname').val(), $('#rtype').val(), $('#raddress').val(), $('#rcity').val(), $('#rstate').val(), $('#rzip').val(), $('#rcomments').val()); return false;">
+            <form onsubmit="AddRestaurantTry($('#rname').val(), $('#rtype').val(), $('#raddress').val(), $('#rcity').val(), $('#rstate').val(), $('#rzip').val()); return false;">
 
                 <label for="rname"> Restaurant Name:</label>
                 <input type="text" id="rname" name="rname" placeholder="Your Restaurant..">
@@ -62,15 +61,15 @@ href="css-addtotry.css">
 
                 <label for="rstate">State:</label>
                 <select id="rstate" name="rstate">
-                    <option value="az">AZ</option>
-                    <option value="az">Other</option>
+                    <option value="AZ">AZ</option>
+                    <option value="NA">Other</option>
                 </select>
 
                 <label for="rzip">Zip Code:</label>
                 <input type="text" id="rzip" name="rzip" placeholder="Your Restaurant zip-code..">
 
-                <label for="rcomments">Comments:</label>
-                <textarea id="rcomments" name="rcomments" placeholder="Write something.." style="height:200px"></textarea>
+                <!--<label for="rcomments">Comments:</label>
+                <textarea id="rcomments" name="rcomments" placeholder="Write something.." style="height:200px"></textarea>-->
 
                 <input type="submit" value="Submit">
 
