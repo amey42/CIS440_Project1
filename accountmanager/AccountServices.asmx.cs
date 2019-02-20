@@ -167,6 +167,75 @@ namespace accountmanager
             }
             sqlConnection.Close();
         }
+        [WebMethod(EnableSession = true)]
+        public Restaurant[] GetRestaurant()
+        {
+            //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
+            //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
+            //sets of information, it's a good idea to create a custom container class to represent instances (or rows) of that information, and then return an array of those objects.  
+            //Keeps everything simple.
+
+            //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
+            if (Session["id"] != null)
+            {
+                DataTable sqlDt = new DataTable("restaurant");
+
+                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+                string sqlSelect = "select * from restaurant";
+
+                MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+                MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+                //gonna use this to fill a data table
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+                //filling the data table
+                sqlDa.Fill(sqlDt);
+
+                //loop through each row in the dataset, creating instances
+                //of our container class Account.  Fill each acciount with
+                //data from the rows, then dump them in a list.
+                List<Restaurant> restaurant = new List<Restaurant>();
+                for (int i = 0; i < sqlDt.Rows.Count; i++)
+                {
+                    //only share user id and pass info with admins!
+                    if (Convert.ToInt32(Session["admin"]) == 1)
+                    {
+                        restaurant.Add(new Restaurant
+                        {
+                            id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+                            name = sqlDt.Rows[i]["name"].ToString(),
+                            type = sqlDt.Rows[i]["type"].ToString(),
+                            address = sqlDt.Rows[i]["address"].ToString(),
+                            city = sqlDt.Rows[i]["city"].ToString(),
+                            state = sqlDt.Rows[i]["state"].ToString(),
+                            zip = sqlDt.Rows[i]["zip"].ToString(),
+                            comments = sqlDt.Rows[i]["comments"].ToString()
+                        });
+                    }
+                    else
+                    {
+                        restaurant.Add(new Restaurant
+                        {
+                            id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+                            name = sqlDt.Rows[i]["name"].ToString(),
+                            type = sqlDt.Rows[i]["type"].ToString(),
+                            address = sqlDt.Rows[i]["address"].ToString(),
+                            city = sqlDt.Rows[i]["city"].ToString(),
+                            state = sqlDt.Rows[i]["state"].ToString(),
+                            zip = sqlDt.Rows[i]["zip"].ToString(),
+                            comments = sqlDt.Rows[i]["comments"].ToString()
+                         });
+                    }
+                }
+                //convert the list of accounts to an array and return!
+                return restaurant.ToArray();
+            }
+            else
+            {
+                //if they're not logged in, return an empty array
+                return new Restaurant[0];
+            }
+        }
 
         //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
         [WebMethod(EnableSession = true)]
@@ -180,7 +249,7 @@ namespace accountmanager
 			//WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
 			if (Session["id"] != null)
 			{
-				DataTable sqlDt = new DataTable("accounts");
+				DataTable sqlDt = new DataTable("user");
 
 				string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 				string sqlSelect = "select id, userid, pass, firstname, lastname, email from account where active=1 order by lastname";
