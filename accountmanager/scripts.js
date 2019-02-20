@@ -128,7 +128,6 @@
             dataType: "json",
             success: function (msg)
             {
-                alert("Success");
                 window.location = "./LoginPage.html";
             },
             error: function (e)
@@ -138,11 +137,12 @@
         });
 
     }
-function AddRestaurant(name, type, address, city, state, zip, comments)
+
+    function AddRestaurant(name, type, address, city, state, zip)
     //score_food, score_atmo, score_service,phone, email, tried
     {
         var webMethod = "AccountServices.asmx/AddRestaurant";
-        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"comments\":\"" + encodeURI(comments) + "\"}";
+        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\"}";
         //"\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) ++ "\",\"phone\":\"" + encodeURI(phoemail\":\"" + encodeURI(email) + "\",\"tried\":\"" + encodeURI(tried)
         console.log(parameters);
 
@@ -154,7 +154,6 @@ function AddRestaurant(name, type, address, city, state, zip, comments)
             dataType: "json",
             success: function (msg)
             {
-                alert("Success");
                 window.location = "./homepage-try.html";
             },
             error: function (e)
