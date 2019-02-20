@@ -121,7 +121,7 @@ namespace accountmanager
 
         //Method to add restaurant to database
         [WebMethod(EnableSession = true)]
-        public void AddRestaurant(string name, string type, string address, string city, string state, string zip)
+        public void AddRestaurantTry(string name, string type, string address, string city, string state, string zip)
         {
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
             //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
