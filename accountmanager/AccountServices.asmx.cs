@@ -148,7 +148,7 @@ namespace accountmanager
             sqlCommand.Parameters.AddWithValue("@zip", HttpUtility.UrlDecode(Convert.ToString(zip)));
             //sqlCommand.Parameters.AddWithValue("@tried", HttpUtility.UrlDecode(Convert.ToString(tried)));
             //sqlCommand.Parameters.AddWithValue("@comments", HttpUtility.UrlDecode(comments));
-            //sqlCommand.Parameters.AddWithValue("@user", "scrumlords@asu.edu"); //get username from current session
+            //sqlCommand.Parameters.AddWithValue("@user", Session["cust_email"]); //get username from current session
 
             sqlConnection.Open();
 
