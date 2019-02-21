@@ -1,39 +1,36 @@
 <!doctype html>
-
 <html>
+    <head>
+        <title>Restauranteer</title>
 
-   <head>
-    <link rel="stylesheet" href="styles.css"> 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">   
-    <title>Restauranteer</title>
-   </head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    </head>
 
-   <body>
-    <img src="restaurantphoto.jpg" id="background">
-       <header>
-           <a href="loginPage.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
-       </header>
+    <body>
+        <img src="restaurantphoto.jpg" id="background">
+        <header>
+            <a href="loginPage.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
+        </header>
 
-       <main>
-           <form onsubmit="CreateAccount($('#newLogonId').val(), $('#newLogonPassword').val(), $('#newLogonFName').val(), $('#newLogonLName').val()); return false;">
-               <h2>Create Account</h2>          
-               <input type="text" id="newLogonFName" placeholder=" First Name"><br><br>
-               <input type="text" id="newLogonLName" placeholder=" Last Name"><br><br>
-               <input type="text" id="newLogonId" placeholder=" Email"><br><br>
-               <input type="password" id="newLogonPassword" placeholder=" Password"><br><br>
+        <main>
+            <form onsubmit="CreateAccount($('#newLogonId').val(), $('#newLogonPassword').val(), $('#newLogonFName').val(), $('#newLogonLName').val()); return false;">
+                <h2>Create Account</h2>          
+                    <input type="text" id="newLogonFName" placeholder=" First Name"><br><br>
+                    <input type="text" id="newLogonLName" placeholder=" Last Name"><br><br>
+                    <input type="text" id="newLogonId" placeholder=" Email"><br><br>
+                    <input type="password" id="newLogonPassword" placeholder=" Password"><br><br>
+                    <button type="submit">Create Account</button>
+            </form>
+        </main>
 
-               <button type="submit">Create Account</button>
-           </form>
-       </main>
+        <footer>
+            <br>
+            ScrumLord Technologies - <em>Login Page Test</em>
+        </footer>
 
-       <footer>
-           <br>
-           ScrumLord Technologies - <em>Login Page Test</em>
-       </footer>
-
-       <script type="text/javascript" src="scripts.js"></script>
-       <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   </body>
-
+        <script type="text/javascript" src="scripts.js"></script>
+        <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </body>
 </html>
