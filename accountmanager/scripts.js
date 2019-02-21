@@ -66,7 +66,9 @@ function LogOff()
                 //and clear the chat panel
                 window.location = "./LoginPage.html";
             }
-            else {
+            else
+            {
+                alert("logon failed");
             }
         },
         error: function (e) {
