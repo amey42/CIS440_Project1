@@ -167,6 +167,58 @@ namespace accountmanager
             sqlConnection.Close();
         }
 
+        //Method to add restaurant to database
+        [WebMethod(EnableSession = true)]
+        public void AddRestaurantReview(string name, string type, string address, string city, string state, string zip, string comments, int rating)
+        {
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
+            //does is tell mySql server to return the primary key of the last inserted row.
+
+            string sqlSelect = "insert into restaurant (name, type, address, city, state, zip, comments, rating, tried, user) " +
+                "values(@name, @type, @address, @city, @state, @zip, @comments, @rating, @tried, @user); SELECT LAST_INSERT_ID();";
+
+            //score_food, score_atmo, score_service, tried, phone, email
+            MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+            MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+
+            sqlCommand.Parameters.AddWithValue("@name", HttpUtility.UrlDecode(name));
+            sqlCommand.Parameters.AddWithValue("@type", HttpUtility.UrlDecode(type));
+            //sqlCommand.Parameters.AddWithValue("@score_food", HttpUtility.UrlDecode(Convert.ToString(score_food)));
+            //sqlCommand.Parameters.AddWithValue("@score_atmo", HttpUtility.UrlDecode(Convert.ToString(score_atmo)));
+            //sqlCommand.Parameters.AddWithValue("@score_service", HttpUtility.UrlDecode(Convert.ToString(score_service)));
+            //sqlCommand.Parameters.AddWithValue("@phone", HttpUtility.UrlDecode(phone));
+            //sqlCommand.Parameters.AddWithValue("@email", HttpUtility.UrlDecode(email));
+            sqlCommand.Parameters.AddWithValue("@address", HttpUtility.UrlDecode(address));
+            sqlCommand.Parameters.AddWithValue("@city", HttpUtility.UrlDecode(city));
+            sqlCommand.Parameters.AddWithValue("@state", HttpUtility.UrlDecode(state));
+            sqlCommand.Parameters.AddWithValue("@zip", HttpUtility.UrlDecode(Convert.ToString(zip)));
+            sqlCommand.Parameters.AddWithValue("@comments", HttpUtility.UrlDecode(comments));
+            sqlCommand.Parameters.AddWithValue("@rating", rating);
+            sqlCommand.Parameters.AddWithValue("@tried", 1);
+            //sqlCommand.Parameters.AddWithValue("@user", Session["cust_email"]); //get username from current session
+            sqlCommand.Parameters.AddWithValue("@user", "test@asu.edu"); //get username from current session
+
+
+            sqlConnection.Open();
+
+            try
+            {
+                int accountID = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                //here, you could use this accountID for additional queries regarding
+                //the requested account.  Really this is just an example to show you
+                //a query where you get the primary key of the inserted row back from
+                //the database!
+            }
+            catch (Exception e)
+            {
+
+            }
+            sqlConnection.Close();
+        }
+
+
         //[WebMethod(EnableSession = true)]
         //public Restaurant[] GetRestaurant()
         //{
