@@ -78,10 +78,10 @@ function LogOff()
 }
 
 
-    function CreateAccount(id, pass, fname, lname)
-    {
-        var webMethod = "AccountServices.asmx/RequestAccount";
-        var parameters = "{\"uid\":\"" + encodeURI(id) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstName\":\"" + encodeURI(fname) + "\",\"lastName\":\"" + encodeURI(lname) + "\"}";
+function CreateAccount(id, pass, fname, lname)
+{
+    var webMethod = "AccountServices.asmx/RequestAccount";
+    var parameters = "{\"uid\":\"" + encodeURI(id) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstName\":\"" + encodeURI(fname) + "\",\"lastName\":\"" + encodeURI(lname) + "\"}";
 
         $.ajax({
             type: "POST",
@@ -98,7 +98,6 @@ function LogOff()
                 alert("boo...");
             }
         });
-
     }
 
     function AddRestaurantTry(name, type, address, city, state, zip)
@@ -124,9 +123,28 @@ function LogOff()
                 alert("Server error");
             }
         });
+}
 
-    }
+function AddRestaurantReview(name, type, address, city, state, zip, comments, rating)
+{
+    var webMethod = "AccountServices.asmx/AddRestaurantReview";
+    var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"comments\":\"" + encode(comments) + "\",\"rating\":" + rating + "}";
+    console.log(parameters);
 
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        data: parameters,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            window.location = "./homepage-try.html";
+        },
+        error: function (e) {
+            alert("Server error");
+        }
+    });
+}
 
 
 

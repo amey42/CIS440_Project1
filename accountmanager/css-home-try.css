@@ -117,8 +117,76 @@ li.dropdown {
   display: block;
 }
 
+#restDetailName{
+  color: #76323F;
+}
 
+td{
+  text-align: left;
+  color: #565656;
+}
+th{
+  background-color: #76323F;
+  border-style: solid;
+  border-color: #76323F;
+  border-radius: 5px;
+  color: white;
+  text-align: left;
+}
 
+table{
+  display: inline-block;
+  font-size: x-large;
+}
 
+td, th{
+  width: 35vw;
+}
 
+#restDetailComments td, #restDetailComments th, #restDetailAddress td, #restDetailAddress th, #restDetailTypeToTry td, #restDetailTypeToTry th{
+  width: 70vw;
+}
 
+#restDetailComments td{
+  height: 20vh;
+  vertical-align: text-top;
+}
+
+button{
+  border-style: none;
+  background-color: #565656;
+  color: white;
+  border-radius: 5px;
+  font-size: 4vh;
+  height: 5vh;
+}
+
+#restDetailButtons{
+  width: 70vw;
+}
+#restDetailButtons button{
+  width: 19vw;
+}
+
+#restDetailButtons td{
+  width: 23.333vw;
+}
+
+#leftButton{
+  text-align: right;
+}
+#midButton{
+  text-align: center;
+}
+
+#rightButton{
+  text-align: left;
+}
+
+#midButton button{
+  background-color: #76323F;
+}
+
+h5{
+  color: #565656;
+}

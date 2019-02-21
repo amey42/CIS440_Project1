@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css-home-try.css">  
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<title>Restauranteer</title>
+</head>
+<body>
+
+<header>
+<div class="container">
+
+<nav>
+
+<ul>
+<a href="homepage-try.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
+<li><a href="homepage-try.html">Home</a>|</li>
+<li><a href="#">About Us</a>|</li>
+
+<li class="dropdown">
+<a href="javascript:void(0)" class="dropbtn">Add Restaurant</a>
+    <div class="dropdown-content">
+      <a href="#">Add A Review</a>
+      <a href="add-rest-totry.html">Add Restaurant to try</a>
+    </div>
+<li><a href="#">View My Past Reviews</a>|</li>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn" ><img src="logoffImage.png" id="logoffButton"></a>
+    <div class="dropdown-content">
+      <a href="LoginPage.html">Sign Off</a>
+    </div>	
+
+</li>
+</ul>
+</nav>
+
+</div></header>
+
+<main>
+	<h1 id="restDetailName">Restaurant Name</h1>
+	<h5><em>You have not tried this Restaurant yet</em></h5>
+	<br>
+	<table id="restDetailTypeToTry">
+		<tr>
+			<th class="restDetailLabel">Cuisine</th>
+		</tr>
+		<tr>
+			<td class="restDetailOutput">Put Type Here</td>
+		</tr>
+	</table>
+	<br>
+	<table id="restDetailAddress">
+		<tr>
+			<th class="restDetailLabel">Address</th>
+		</tr>
+		<tr>
+			<td class="restDetailOutput">Put Address + City + State + ZIP Here</td>
+		</tr>
+	</table>
+	<br>
+
+	<table id="restDetailButtons">
+		<tr>
+			<td id="leftButton">
+				<button>Edit</button>
+			</td>
+			<td id="midButton">
+				<button>I've tried it!</button>
+			</td>
+			<td id="rightButton">
+				<button>Delete</button>
+			</td>
+		</tr>
+	</table>
+</main>
+
+<footer>
+	<em>ScrumLord Technologies</em>
+</footer>
+
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
