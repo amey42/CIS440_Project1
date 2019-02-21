@@ -127,8 +127,8 @@ namespace accountmanager
             //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
             //does is tell mySql server to return the primary key of the last inserted row.
 
-            string sqlSelect = "insert into restaurant (name, type, address, city, state, zip) " +
-                "values(@name, @type, @address, @city, @state, @zip); SELECT LAST_INSERT_ID();";
+            string sqlSelect = "insert into restaurant (name, type, address, city, state, zip, user) " +
+                "values(@name, @type, @address, @city, @state, @zip, @user); SELECT LAST_INSERT_ID();";
 
             //score_food, score_atmo, score_service, tried, phone, email
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -148,7 +148,7 @@ namespace accountmanager
             sqlCommand.Parameters.AddWithValue("@zip", HttpUtility.UrlDecode(Convert.ToString(zip)));
             //sqlCommand.Parameters.AddWithValue("@tried", HttpUtility.UrlDecode(Convert.ToString(tried)));
             //sqlCommand.Parameters.AddWithValue("@comments", HttpUtility.UrlDecode(comments));
-            //sqlCommand.Parameters.AddWithValue("@user", Session["cust_email"]); //get username from current session
+            sqlCommand.Parameters.AddWithValue("@user", Session["cust_email"]); //get username from current session
 
             sqlConnection.Open();
 
@@ -166,75 +166,76 @@ namespace accountmanager
             }
             sqlConnection.Close();
         }
-        [WebMethod(EnableSession = true)]
-        public Restaurant[] GetRestaurant()
-        {
-            //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
-            //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
-            //sets of information, it's a good idea to create a custom container class to represent instances (or rows) of that information, and then return an array of those objects.  
-            //Keeps everything simple.
 
-            //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
-            if (Session["id"] != null)
-            {
-                DataTable sqlDt = new DataTable("restaurant");
+        //[WebMethod(EnableSession = true)]
+        //public Restaurant[] GetRestaurant()
+        //{
+        //    //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
+        //    //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
+        //    //sets of information, it's a good idea to create a custom container class to represent instances (or rows) of that information, and then return an array of those objects.  
+        //    //Keeps everything simple.
 
-                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-                string sqlSelect = "select * from restaurant";
+        //    //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
+        //    if (Session["id"] != null)
+        //    {
+        //        DataTable sqlDt = new DataTable("restaurant");
 
-                MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
-                MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+        //        string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+        //        string sqlSelect = "select * from restaurant";
 
-                //gonna use this to fill a data table
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
-                //filling the data table
-                sqlDa.Fill(sqlDt);
+        //        MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+        //        MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
 
-                //loop through each row in the dataset, creating instances
-                //of our container class Account.  Fill each acciount with
-                //data from the rows, then dump them in a list.
-                List<Restaurant> restaurant = new List<Restaurant>();
-                for (int i = 0; i < sqlDt.Rows.Count; i++)
-                {
-                    //only share user id and pass info with admins!
-                    if (Convert.ToInt32(Session["admin"]) == 1)
-                    {
-                        restaurant.Add(new Restaurant
-                        {
-                            id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
-                            name = sqlDt.Rows[i]["name"].ToString(),
-                            type = sqlDt.Rows[i]["type"].ToString(),
-                            address = sqlDt.Rows[i]["address"].ToString(),
-                            city = sqlDt.Rows[i]["city"].ToString(),
-                            state = sqlDt.Rows[i]["state"].ToString(),
-                            zip = sqlDt.Rows[i]["zip"].ToString(),
-                            comments = sqlDt.Rows[i]["comments"].ToString()
-                        });
-                    }
-                    else
-                    {
-                        restaurant.Add(new Restaurant
-                        {
-                            id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
-                            name = sqlDt.Rows[i]["name"].ToString(),
-                            type = sqlDt.Rows[i]["type"].ToString(),
-                            address = sqlDt.Rows[i]["address"].ToString(),
-                            city = sqlDt.Rows[i]["city"].ToString(),
-                            state = sqlDt.Rows[i]["state"].ToString(),
-                            zip = sqlDt.Rows[i]["zip"].ToString(),
-                            comments = sqlDt.Rows[i]["comments"].ToString()
-                         });
-                    }
-                }
-                //convert the list of accounts to an array and return!
-                return restaurant.ToArray();
-            }
-            else
-            {
-                //if they're not logged in, return an empty array
-                return new Restaurant[0];
-            }
-        }
+        //        //gonna use this to fill a data table
+        //        MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+        //        //filling the data table
+        //        sqlDa.Fill(sqlDt);
+
+        //        //loop through each row in the dataset, creating instances
+        //        //of our container class Account.  Fill each acciount with
+        //        //data from the rows, then dump them in a list.
+        //        List<Restaurant> restaurant = new List<Restaurant>();
+        //        for (int i = 0; i < sqlDt.Rows.Count; i++)
+        //        {
+        //            //only share user id and pass info with admins!
+        //            if (Convert.ToInt32(Session["admin"]) == 1)
+        //            {
+        //                restaurant.Add(new Restaurant
+        //                {
+        //            //        id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+        //            //        name = sqlDt.Rows[i]["name"].ToString(),
+        //            //        type = sqlDt.Rows[i]["type"].ToString(),
+        //            //        address = sqlDt.Rows[i]["address"].ToString(),
+        //            //        city = sqlDt.Rows[i]["city"].ToString(),
+        //            //        state = sqlDt.Rows[i]["state"].ToString(),
+        //            //        zip = sqlDt.Rows[i]["zip"].ToString(),
+        //            //        comments = sqlDt.Rows[i]["comments"].ToString()
+        //            //    });
+        //            //}
+        //            else
+        //            {
+        //                restaurant.Add(new Restaurant
+        //                {
+        //                    id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+        //                    name = sqlDt.Rows[i]["name"].ToString(),
+        //                    type = sqlDt.Rows[i]["type"].ToString(),
+        //                    address = sqlDt.Rows[i]["address"].ToString(),
+        //                    city = sqlDt.Rows[i]["city"].ToString(),
+        //                    state = sqlDt.Rows[i]["state"].ToString(),
+        //                    zip = sqlDt.Rows[i]["zip"].ToString(),
+        //                    comments = sqlDt.Rows[i]["comments"].ToString()
+        //                 });
+        //            }
+        //        }
+        //        //convert the list of accounts to an array and return!
+        //        return restaurant.ToArray();
+        //    }
+        //    else
+        //    {
+        //        //if they're not logged in, return an empty array
+        //        return new Restaurant[0];
+        //    }
+        //}
 
         //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
         [WebMethod(EnableSession = true)]
