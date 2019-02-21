@@ -1,9 +1,9 @@
 //JavaScript functions for Restauranteer
 
-    function LogOn(uid, pass)
-    {
-        var webMethod = "AccountServices.asmx/LogOn";
-        var parameters = "{\"uid\":\"" + encodeURI(uid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
+function LogOn(uid, pass)
+{
+    var webMethod = "AccountServices.asmx/LogOn";
+    var parameters = "{\"uid\":\"" + encodeURI(uid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
 
         $.ajax({
             //post is more secure than get, and allows
@@ -48,7 +48,32 @@
                 alert("boo...");
             }
         });
-    }
+}
+
+//logs the user off both at the client and at the server
+function LogOff()
+{
+    var webMethod = "AccountServices.asmx/LogOff";
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            if (msg.d) {
+                //we logged off, so go back to logon page,
+                //stop checking messages
+                //and clear the chat panel
+                window.location = "./LoginPage.html";
+            }
+            else {
+            }
+        },
+        error: function (e) {
+            alert("boo...");
+        }
+    });
+}
 
 
     function CreateAccount(id, pass, fname, lname)
