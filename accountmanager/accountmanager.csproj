@@ -84,6 +84,7 @@
     <Content Include="css-addtotry.css" />
     <Content Include="css-home-try.css" />
     <Content Include="Global.asax" />
+    <Content Include="HaveTriedDetailsPage.html" />
     <Content Include="homepage-try.html" />
     <Content Include="index.html" />
     <Content Include="LoginPage.html" />
@@ -95,6 +96,7 @@
     <Content Include="scripts.js" />
     <Content Include="styles.css" />
     <Content Include="testConnection.js" />
+    <Content Include="ToTryDetailsPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
