@@ -198,7 +198,7 @@ namespace accountmanager
             sqlCommand.Parameters.AddWithValue("@rating", rating);
             sqlCommand.Parameters.AddWithValue("@tried", 1);
             //sqlCommand.Parameters.AddWithValue("@user", Session["cust_email"]); //get username from current session
-            sqlCommand.Parameters.AddWithValue("@user", "test@asu.edu"); //get username from current session
+            sqlCommand.Parameters.AddWithValue("@user", "scrumlords@asu.edu"); //plug in default 
 
 
             sqlConnection.Open();
@@ -218,9 +218,8 @@ namespace accountmanager
             sqlConnection.Close();
         }
 
-
         [WebMethod(EnableSession = true)]
-        public Restaurant[] GetRestaurant()
+        public Restaurant[] GetRestaurants()
         {
             //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
             //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
@@ -228,40 +227,58 @@ namespace accountmanager
             //Keeps everything simple.
 
             //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
-
-            DataTable sqlDt = new DataTable("restaurant");
-
-            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-            string sqlSelect = "select * from restaurant";
-
-            MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
-            MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
-
-            //gonna use this to fill a data table
-            MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
-            //filling the data table
-            sqlDa.Fill(sqlDt);
-
-            //loop through each row in the dataset, creating instances
-            //of our container class Account.  Fill each acciount with
-            //data from the rows, then dump them in a list.
-            List<Restaurant> restaurant = new List<Restaurant>();
-            for (int i = 0; i < sqlDt.Rows.Count; i++)
+            if (Session["cust_email"] != null)
             {
-                //only share user id and pass info with admins!
+                DataTable sqlDt = new DataTable("restaurant");
 
-                restaurant.Add(new Restaurant
+                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+                string sqlSelect = "select * from restaurant where user = @currentUser";
+
+                MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+                MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+                sqlCommand.Parameters.AddWithValue("@currentUser", Session["cust_email"]);
+
+                //gonna use this to fill a data table
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+                //filling the data table
+                sqlDa.Fill(sqlDt);
+
+                //loop through each row in the dataset, creating instances
+                //of our container class Account.  Fill each acciount with
+                //data from the rows, then dump them in a list.
+
+                List<Restaurant> restaurants = new List<Restaurant>();
+                //List<Restaurant> restaurantsReviewed = new List<Restaurant>();
+                for (int i = 0; i < sqlDt.Rows.Count; i++)
                 {
-
-                    name = sqlDt.Rows[i]["name"].ToString()
-
-                });
+                    //only share user id and pass info with admins!
+                    //if (Convert.ToInt32(Session["admin"]) == 1)
+                    restaurants.Add(new Restaurant
+                    {
+                        id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+                        user = sqlDt.Rows[i]["user"].ToString(),
+                        name = sqlDt.Rows[i]["name"].ToString(),
+                        type = sqlDt.Rows[i]["type"].ToString(),
+                        rating = Convert.ToInt32(sqlDt.Rows[i]["rating"]),
+                        address = sqlDt.Rows[i]["address"].ToString(),
+                        city = sqlDt.Rows[i]["city"].ToString(),
+                        state = sqlDt.Rows[i]["state"].ToString(),
+                        zip = sqlDt.Rows[i]["zip"].ToString(),
+                        tried = Convert.ToBoolean(sqlDt.Rows[i]["tried"])
+                    });
+                }
+                //convert the list of accounts to an array and return!
+                return restaurants.ToArray();
             }
-
-            //convert the list of accounts to an array and return!
-            return restaurant.ToArray();
-
+            else
+            {
+                //if they're not logged in, return an empty array
+                return new Restaurant[0];
+            }
         }
+        
+        
         //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
         [WebMethod(EnableSession = true)]
 		public Account[] GetAccounts()

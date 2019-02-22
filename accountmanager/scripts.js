@@ -146,5 +146,60 @@ function AddRestaurantReview(name, type, address, city, state, zip, comments, ra
     });
 }
 
+function GetRestaurants() {
+    var webMethod = "AccountServices.asmx/GetRestaurants";
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            if (msg.d.length > 0) {
+                //let's put our accounts that we get from the
+                //server into our accountsArray variable
+                //so we can use them in other functions as well
+                restaurantsArray = msg.d;
+
+                //this clears out the div that will hold our account info
+                //$("#restaurantsTry").empty();
+                //$("#restaurantsReviewed").empty();
+
+                for (var i = 0; i < restaurantsArray.length; i++) {
+                    if (restaurantsArray[i].tried === false) {
+                        restaurantsTry.push(restaurantsArray[i]);
+                    }
+                    else {
+                        restaurantsReviewed.push(restaurantsArray[i]);
+                    }
+                }
+
+                for (var j = 0; j < restaurantsTry.length; j++) {
+                    var restT;
+                    restT = "<div class='restaurantRow' id='restT" + [j].id + "'>" +
+                        "<a class='nameTag' href='javascript:LoadRestaurant(" + restaurantsTry[j].id + ")'>" +
+                        restaurantsTry[j].name + " " + restaurantsTry[j].type +
+                        "</a>"
+
+                    //$("#restaurantsTry").append(restT); #restaurantsTry can be swapped out for the id of element it will displayed in
+                }
+
+                for (var k = 0; k < restaurantsReviewed.length; k++) {
+                    var restR;
+                    restR = "<div class='restaurantRow' id='restR" + [k].id + "'>" +
+                        "<a class='nameTag' href='javascript:LoadRestaurant(" + restaurantsReviewed[k].id + "'>" +
+                        restaurantsReviewed[k].name + " " + restaurantsReviewed[k].type +
+                        "</a>"
+
+                    //$("#restaurantsReviewed").append(restR); #restaurantsReviewed can be swapped out for the id of element it will displayed in
+                }
+            }
+        },
+        error: function (e) {
+            alert("server error");
+        }
+    });
+}
+
+
 
 
