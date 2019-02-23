@@ -79,6 +79,7 @@
   <ItemGroup>
     <Content Include="AccountIcon2.png" />
     <Content Include="AccountServices.asmx" />
+    <Content Include="add-rest-review.html" />
     <Content Include="add-rest-totry.html" />
     <Content Include="CreateAccount.html" />
     <Content Include="css-addtotry.css" />
