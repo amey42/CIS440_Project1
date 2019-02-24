@@ -36,7 +36,7 @@
 
     <main>
         <div class="container">
-            <form onsubmit="AddRestaurantReview($('#rrname').val(), $('#rrtype').val(), $('#rraddress').val(), $('#rrcity').val(), $('#rrstate').val(), $('#rrzip').val(), $('#rrscore')); return false;">
+            <form onsubmit="AddRestaurantReview($('#rrname').val(), $('#rrtype').val(), $('#rraddress').val(), $('#rrcity').val(), $('#rrstate').val(), $('#rrzip').val(), $('#rrcomments').val()); return false;">
 
                 <label for="rname"> Restaurant Name:</label>
                 <input type="text" id="rrname" name="rrname" placeholder="Name of the Restaurant..">
@@ -56,19 +56,19 @@
                 <label for="rrzip">Zip Code:</label>
                 <input type="text" id="rrzip" name="rrzip" placeholder="Your Restaurant zip-code..">
 
-                <label for="Cuisine">Cuisine:</label>
-                <textarea id="rrcuisine" name="rrcuisine" placeholder="Mexican, Italian, Mediterranean, Ethiopian..."></textarea>
+                <label for="Type">Type:</label>
+                <textarea id="rrtype" name="rrtype" placeholder="Mexican, Italian, Mediterranean, Ethiopian..."></textarea>
 
                 <label for="rrcomments"> Full Review:</label>
                 <textarea id="rrcomments" name="rrcomments" placeholder="How was your experience?" style="height:200px"></textarea>
 
                 <label for="rrscore">How many stars would you give?</label>
                 <p id="rrscore">
-                    <input type="radio" name="stars" value= 1> One Star
-                    <input type="radio" name="stars" value= 2> Two Stars
-                    <input type="radio" name="stars" value= 3 checked> Three Stars
-                    <input type="radio" name="stars" value= 4> Four Stars
-                    <input type="radio" name="stars" value= 5> Five Stars<br>
+                    <input type="radio" name="stars" value=1> One Star
+                    <input type="radio" name="stars" value=2> Two Stars
+                    <input type="radio" name="stars" value=3 checked> Three Stars
+                    <input type="radio" name="stars" value=4> Four Stars
+                    <input type="radio" name="stars" value=5> Five Stars<br>
                 </p>
                 <input type="submit" value="Submit">
             </form>

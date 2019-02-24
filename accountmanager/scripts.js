@@ -100,13 +100,13 @@ function CreateAccount(id, pass, fname, lname)
         });
     }
 
-    function AddRestaurantTry(name, type, address, city, state, zip)
-    //score_food, score_atmo, score_service,phone, email, tried
-    {
-        var webMethod = "AccountServices.asmx/AddRestaurantTry";
-        var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\"}";
-        //"\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) ++ "\",\"phone\":\"" + encodeURI(phoemail\":\"" + encodeURI(email) + "\",\"tried\":\"" + encodeURI(tried)
-        console.log(parameters);
+function AddRestaurantTry(name, type, address, city, state, zip)
+//score_food, score_atmo, score_service,phone, email, tried
+{
+    var webMethod = "AccountServices.asmx/AddRestaurantTry";
+    var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\"}";
+    //"\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) ++ "\",\"phone\":\"" + encodeURI(phoemail\":\"" + encodeURI(email) + "\",\"tried\":\"" + encodeURI(tried)
+    console.log(parameters);
 
         $.ajax({
             type: "POST",
@@ -126,20 +126,22 @@ function CreateAccount(id, pass, fname, lname)
 }
 
 function AddRestaurantReview(name, type, address, city, state, zip, comments)
+//score_food, score_atmo, score_service,phone, email, tried
 {
     var rating = 0;
-    var radios = document.getElementsByName('stars');
-    for (var i = 0; i < radios.length; i++)
+    var stars = document.getElementsByName('stars');
+
+    for (var i = 0; i < stars.length; i++)
     {
-        if (radios[i].checked)
+        if (stars[i].checked)
         {
-            rating = radios[i].value;
-            break;
+            rating = stars[i].value;
         }
     }
 
     var webMethod = "AccountServices.asmx/AddRestaurantReview";
-    var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"comments\":\"" + encode(comments) + "\",\"rating\":" + rating + "}";
+    var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"comments\":\"" + encodeURI(comments) + "\",\"rating\":" + rating + "}";
+    //"\",\"score_food\":\"" + encodeURI(score_food) + "\",\"score_atmo\":\"" + encodeURI(score_atmo) + "\", \"score_service\":\"" + encodeURI(score_service) ++ "\",\"phone\":\"" + encodeURI(phoemail\":\"" + encodeURI(email) + "\",\"tried\":\"" + encodeURI(tried)
     console.log(parameters);
 
     $.ajax({
