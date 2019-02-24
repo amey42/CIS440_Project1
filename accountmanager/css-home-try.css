@@ -190,3 +190,10 @@ button{
 h5{
   color: #565656;
 }
+
+#restaurantsTry, restaurantsReviewed
+{
+    margin: auto;
+    float: left;
+
+}

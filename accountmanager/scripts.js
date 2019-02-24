@@ -159,6 +159,10 @@ function AddRestaurantReview(name, type, address, city, state, zip, comments)
     });
 }
 
+var restaurantsArray;
+var restaurantsTry = [];
+var restaurantsReviewed = [];
+
 function GetRestaurants() {
     var webMethod = "AccountServices.asmx/GetRestaurants";
     $.ajax({
@@ -193,7 +197,7 @@ function GetRestaurants() {
                         restaurantsTry[j].name + " " + restaurantsTry[j].type +
                         "</a>"
 
-                    //$("#restaurantsTry").append(restT); #restaurantsTry can be swapped out for the id of element it will displayed in
+                    $("#restaurantsTry").append(restT);
                 }
 
                 for (var k = 0; k < restaurantsReviewed.length; k++) {
@@ -203,7 +207,7 @@ function GetRestaurants() {
                         restaurantsReviewed[k].name + " " + restaurantsReviewed[k].type +
                         "</a>"
 
-                    //$("#restaurantsReviewed").append(restR); #restaurantsReviewed can be swapped out for the id of element it will displayed in
+                    $("#restaurantsReviewed").append(restR);
                 }
             }
         },

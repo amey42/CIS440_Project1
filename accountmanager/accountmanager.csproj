@@ -88,6 +88,7 @@
     <Content Include="HaveTriedDetailsPage.html" />
     <Content Include="homepage-try.html" />
     <Content Include="index.html" />
+    <Content Include="ListView.html" />
     <Content Include="LoginPage.html" />
     <Content Include="logo-1.png" />
     <Content Include="logo.png" />
@@ -142,7 +143,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50406</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
