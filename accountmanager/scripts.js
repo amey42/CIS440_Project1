@@ -125,8 +125,19 @@ function CreateAccount(id, pass, fname, lname)
         });
 }
 
-function AddRestaurantReview(name, type, address, city, state, zip, comments, rating)
+function AddRestaurantReview(name, type, address, city, state, zip, comments)
 {
+    var rating = 0;
+    var radios = document.getElementsByName('stars');
+    for (var i = 0; i < radios.length; i++)
+    {
+        if (radios[i].checked)
+        {
+            rating = radios[i].value;
+            break;
+        }
+    }
+
     var webMethod = "AccountServices.asmx/AddRestaurantReview";
     var parameters = "{\"name\":\"" + encodeURI(name) + "\",\"type\":\"" + encodeURI(type) + "\",\"address\":\"" + encodeURI(address) + "\",\"city\":\"" + encodeURI(city) + "\",\"state\":\"" + encodeURI(state) + "\",\"zip\":\"" + encodeURI(zip) + "\",\"comments\":\"" + encode(comments) + "\",\"rating\":" + rating + "}";
     console.log(parameters);
