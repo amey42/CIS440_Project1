@@ -3,103 +3,165 @@
 <head>
     <title> Restauranteer</title>
 
-    <link rel="stylesheet" type="text/css"
-          href="css-addtotry.css">
+    <link rel="stylesheet" href="css-home-try.css">  
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <div class="container">
-            <nav>
-                <ul>
-                    <h1> <img src="logo-1.png"> </h1>
-                    <li><a href="homepage-try.html">Home</a>|</li>
-                    <li><a href="#">About Us</a>|</li>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="homepage-try.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
+                        </li>
+                        <li><a href="homepage-try.html">Home</a>|</li>
+                        <li><a href="#">About Us</a>|</li>
 
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Add Restaurant</a>
-                        <div class="dropdown-content">
-                            <a href="add-rest-review.html">Add A Review</a>
-                            <a href="add-rest-totry.html">Add Restaurant to try</a>
-                        </div>
-                    <li><a href="#">View My Past Reviews</a>|</li>
-                    <li class="dropdown" style="float:right">
-                        <a href="javascript:void(0)" class="dropbtn"><img src="AccountIcon2.png"></a>
-                        <div class="dropdown-content">
-                            <a href="LoginPage.html">Sign Off</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">Add Restaurant</a>
+                            <div class="dropdown-content">
+                                <a href="add-rest-review.html">Add A Review</a>
+                                <a href="add-rest-totry.html">Add Restaurant to try</a>
+                            </div>
+                        </li>
+                        <li><a href="#">View My Past Reviews</a>|</li>
+                        <li class="dropdown" style="float:right">
+                            <a href="javascript:void(0)" class="dropbtn" ><img src="logoffImage.png" id="logoffButton"></a>
+                            <div class="dropdown-content">
+                                <a href="LoginPage.html">Sign Off</a>
+                                <!--<button onclick="LogOff()">Sign Off</button>-->
+                            </div>  
+                        </li>
+                    </ul>
+                </nav>
+            </div>
     </header>
 
     <main>
         <div class="container">
             <form onsubmit="AddRestaurantReview($('#rrname').val(), $('#rrtype').val(), $('#rraddress').val(), $('#rrcity').val(), $('#rrstate').val(), $('#rrzip').val(), $('#rrcomments').val()); return false;">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rname"> Restaurant Name:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="rrname" name="rrname" placeholder="Name of the Restaurant..">
+                        </td>
+                    </tr>
+                </table>
 
-                <label for="rname"> Restaurant Name:</label>
-                <input type="text" id="rrname" name="rrname" placeholder="Name of the Restaurant..">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rraddress">Address:</label>
+                        </th>
+                    </tr>
+                    <tr> 
+                        <td>
+                            <input type="text" id="rraddress" name="rraddress" placeholder="Your Restaurant address..">
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rrcity">City:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="rrcity" name="rrcity" placeholder="Your Restaurant city..">
+                        </td>
+                    </tr>
+                </table>
 
-                <label for="rraddress">Address:</label>
-                <input type="text" id="rraddress" name="rraddress" placeholder="Your Restaurant address..">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rrstate">State:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="rrstate" name="rrstate">
+                                <option value="az">AZ</option>
+                                <option value="az">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rrzip">Zip Code:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="rrzip" name="rrzip" placeholder="Your Restaurant zip-code..">
+                        </td>
+                    </tr>
+                </table>
 
-                <label for="rrcity">City:</label>
-                <input type="text" id="rrcity" name="rrcity" placeholder="Your Restaurant city..">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="Type">Type:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea id="rrtype" name="rrtype" placeholder="Mexican, Italian, Mediterranean, Ethiopian..."></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rrcomments"> Full Review:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea id="rrcomments" name="rrcomments" placeholder="How was your experience?"></textarea>
+                        </td>
+                    </tr>
+                </table>
 
-                <label for="rrstate">State:</label>
-                <select id="rrstate" name="rrstate">
-                    <option value="az">AZ</option>
-                    <option value="az">Other</option>
-                </select>
-
-                <label for="rrzip">Zip Code:</label>
-                <input type="text" id="rrzip" name="rrzip" placeholder="Your Restaurant zip-code..">
-
-                <label for="Type">Type:</label>
-                <textarea id="rrtype" name="rrtype" placeholder="Mexican, Italian, Mediterranean, Ethiopian..."></textarea>
-
-                <label for="rrcomments"> Full Review:</label>
-                <textarea id="rrcomments" name="rrcomments" placeholder="How was your experience?" style="height:200px"></textarea>
-
-                <label for="rrscore">How many stars would you give?</label>
-                <p id="rrscore">
-                    <input type="radio" name="stars" value=1> One Star
-                    <input type="radio" name="stars" value=2> Two Stars
-                    <input type="radio" name="stars" value=3 checked> Three Stars
-                    <input type="radio" name="stars" value=4> Four Stars
-                    <input type="radio" name="stars" value=5> Five Stars<br>
-                </p>
-                <input type="submit" value="Submit">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rrscore">How many stars would you give?</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="rrscore">
+                                <input type="radio" name="stars" value=1> 1
+                                <input type="radio" name="stars" value=2> 2
+                                <input type="radio" name="stars" value=3 checked> 3
+                                <input type="radio" name="stars" value=4> 4
+                                <input type="radio" name="stars" value=5> 5<br>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <input id="submitButton" type="submit" value="Submit">
             </form>
         </div>
     </main>
 
 
     <footer>
-        <div class="sitemap">
-            <ul>
-                <h5>Sitemap</h5>
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Careers</a></li>
-            </ul>
-        </div>
-
-        <div class="contact">
-            <h5>Contact US</h5>
-            <p> </p>
-            <p> </p>
-            <p></p>
-        </div>
-
-        <script type="text/javascript" src="scripts.js"></script>
-        <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+     <em>ScrumLord Technologies</em>
 
     </footer>
 

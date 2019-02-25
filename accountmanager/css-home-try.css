@@ -121,7 +121,7 @@ li.dropdown {
   color: #76323F;
 }
 
-td{
+td, #rrname, #rraddress, #rrcity, #rrstate, #rrzip, textarea, #rname, #raddress, #rcity, #rstate, #rzip, #rtype{
   text-align: left;
   color: #565656;
 }
@@ -137,10 +137,17 @@ th{
 table{
   display: inline-block;
   font-size: x-large;
+  vertical-align: top;
 }
 
-td, th{
+td, th, #rrname, #rraddress, #rrcity, #rrstate, #rrzip, textarea, #rname, #raddress, #rcity, #rstate, #rzip, #rtype{
   width: 35vw;
+  vertical-align: text-top;
+}
+
+#rrname, #rraddress, #rrcity, #rrstate, #rrzip, textarea, #rname, #raddress, #rcity, #rstate, #rzip, #rtype{
+  border-style: none;
+  font-size: large;
 }
 
 #restDetailComments td, #restDetailComments th, #restDetailAddress td, #restDetailAddress th, #restDetailTypeToTry td, #restDetailTypeToTry th{
@@ -152,7 +159,7 @@ td, th{
   vertical-align: text-top;
 }
 
-button{
+button, #submitButton{
   border-style: none;
   background-color: #565656;
   color: white;
@@ -191,9 +198,17 @@ h5{
   color: #565656;
 }
 
-#restaurantsTry, restaurantsReviewed
+#restaurantsTry, #restaurantsReviewed
 {
     margin: auto;
     float: left;
 
+}
+
+#rrstate, #rstate{
+  height: 4vh;
+}
+
+#rrcomments{
+  height: 20vh;
 }
