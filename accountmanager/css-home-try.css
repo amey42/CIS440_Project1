@@ -212,3 +212,30 @@ h5{
 #rrcomments{
   height: 20vh;
 }
+
+.homePics{
+  height: 40vh;
+}
+
+#toTryButton{
+  background-image: url("toTryPic.png");
+}
+
+#haveTriedButton{
+  background-image: url("haveTriedPic.png");
+}
+
+#pastReviewsButton{
+  background-image: url("pastReviewsPic.png");
+}
+
+#toTryButton, #haveTriedButton, #pastReviewsButton{
+  height: 40vh;
+  color: #76323F;
+  font-weight: bolder;
+  border-style: none;
+}
+
+#homePics{
+  height: 40vh;
+}
