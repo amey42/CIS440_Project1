@@ -467,7 +467,7 @@ namespace accountmanager
             
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
             //this is a simple update, with parameters to pass in values
-            string sqlSelect = "update restaurant set rating=@ratingValue, comments=@commentsValue, tried=@triedValue ";
+            string sqlSelect = "update restaurant set rating=@ratingValue, comments=@commentsValue, tried=@triedValue where id=@idValue";
 
 				MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 				MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);

@@ -216,6 +216,16 @@ function GetRestaurants() {
         }
     });
 }
+function DeleteRestaurants() {
+    var webMethod = "AccountServices.asmx/";
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+
+}
 
 
 
