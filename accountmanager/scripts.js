@@ -100,7 +100,7 @@ function CreateAccount(id, pass, fname, lname)
         });
     }
 
-    function AddRestaurantTry(name, type, address, city, state, zip)
+function AddRestaurantTry(name, type, address, city, state, zip)
     //score_food, score_atmo, score_service,phone, email, tried
     {
         var webMethod = "AccountServices.asmx/AddRestaurantTry";
@@ -146,5 +146,63 @@ function AddRestaurantReview(name, type, address, city, state, zip, comments, ra
     });
 }
 
+function ChangeStatus()
+{
+    var webMethod = "AccountServices.asmx/PullRestaurantInfo"
+    
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        data: parameters,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            window.location = "./homepage-try.html";
+        },
+        error: function (e) {
+            alert("Server error");
+        }
+    });
+}
+
+function LoadRestaurant() {
+    var webMethod = "AccountServices.asmx/LoadRestaurant"
+    var parameters = "{\"uid\":\"" + encodeURI(id) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
+    $.ajax({
+        type: "POST",
+        url: webMethod,
+        data: parameters,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (msg) {
+            $('#restDetailName').html = msg.d.name;
+            $('#restCuisine').html = msg.d.type;
+            $('#restAddress').html = msg.d.address + "," + msg.d.city + "," + msg.d.state + "," + msg.d.zip;
+            //for (var j = 0; j < restaurantsTry.length; j++) {
+            //    var restT;
+            //    restT = "<h1 id='restDetailName'>" + restaurantsTry.name + "</h1>"
+
+            //    $("#restDetailName").empty().append(restT);
+            //}
+            //$('#restDetailName').empty()
+            //if (msg.d.length > 0 || restaurantsTry[j].id == msg.d.id)
+            //{
+            //    $('#restDetailName').empty().append(msg.d.name);
+            //    //restaurantsArray = msg.d;
+            //    //for (var i = 0; i < restaurantsArray; i++)
+            //    //{
+
+            //    //        $('restDetailName').html('<h1 id="restDetailName">' + restaurantsArray[i].name + '</h1>');
+
+            //    //}
+            //}          
+            window.location = "ToTryDetailsPage.html";
+        },
+        error: function (e) {
+            window.location = "ToTryDetailsPage.html";
+            alert("oops");
+        }
+    });
+}
 
 

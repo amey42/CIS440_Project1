@@ -480,6 +480,71 @@ namespace accountmanager
 			}
 		}
 
+        [WebMethod(EnableSession = true)]
+        public Restaurant LoadRestaurant(int id)
+        {
+            DataTable sqlDt = new DataTable("restaurantdetail");
 
-	}
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+
+            string sqlSelect = "select name, type, address, city, state, zip from restaurant where @id = id";
+
+            MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+            MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+            sqlDa.Fill(sqlDt);
+
+            sqlCommand.Parameters.AddWithValue("@id", HttpUtility.UrlDecode(Convert.ToString(id)));
+
+            Restaurant restaurant = new Restaurant();
+
+            //restaurant.Add(new Restaurant
+            //{
+            //    id = Convert.ToInt32(sqlDt.Rows[i]["id"]),
+            //    user = sqlDt.Rows[i]["user"].ToString(),
+            //    name = sqlDt.Rows[i]["name"].ToString(),
+            //    type = sqlDt.Rows[i]["type"].ToString(),
+            //    rating = Convert.ToInt32(sqlDt.Rows[i]["rating"]),
+            //    address = sqlDt.Rows[i]["address"].ToString(),
+            //    city = sqlDt.Rows[i]["city"].ToString(),
+            //    state = sqlDt.Rows[i]["state"].ToString(),
+            //    zip = sqlDt.Rows[i]["zip"].ToString(),
+            //    tried = Convert.ToBoolean(sqlDt.Rows[i]["tried"])
+            //});
+
+            //}
+
+            //{
+            //    string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            //    //string sqlSelect = "select from restaurant where";
+            //    List<restaurantDetail> rd = new List<restaurantDetail>();
+            //    //sql connection object
+            //    using (MySqlConnection con = new MySqlConnection(sqlConnectString))
+            //    {
+            //        string sqlselect = "select * from restaurant where user = @currentUser";
+            //        //sql command object to execute
+            //        MySqlCommand cmd = new MySqlCommand(sqlselect, con);
+            //        //open connection
+            //        con.Open();
+            //        //execute
+            //        MySqlDataReader rdr = cmd.ExecuteReader();
+            //        while(rdr.Read())
+            //        {
+            //            restaurantDetail restdetail = new restaurantDetail();
+            //            restdetail.name = rdr["name"].ToString();
+            //            restdetail.cuisine = rdr["type"].ToString();
+            //            restdetail.address = rdr["address"].ToString();
+            //            restdetail.city = rdr["city"].ToString();
+            //            restdetail.state = rdr["state"].ToString();
+            //            restdetail.zip = Convert.ToInt32(rdr["zip"]);
+            //            rd.Add(restdetail);
+            //        }
+            //    }
+            //    JavaScriptSerializer js = new JavaScriptSerializer();
+            //    Context.Response.Write(js.Serialize(rd));
+            //}
+
+        }
+    }
 }
