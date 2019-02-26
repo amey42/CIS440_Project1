@@ -9,45 +9,50 @@
 
 <body onload="GetRestaurants()">
     <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="homepage-try.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
-                    </li>
-                    <li><a href="homepage-try.html">Home</a>|</li>
-                    <li><a href="#">About Us2</a>|</li>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="homepage-try.html"><h1><img src="logo.png" id="logo">Restauranteer</h1></a>
+                        </li>
+                        <li><a href="homepage-try.html">Home</a>|</li>
+                        <li><a href="#">About Us</a>|</li>
 
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Add Restaurant</a>
-                        <div class="dropdown-content">
-                            <a href="add-rest-review.html">Add A Review</a>
-                            <a href="add-rest-totry.html">Add Restaurant to try</a>
-                        </div>
-                    </li>
-                    <li><a href="#">View My Past Reviews</a>|</li>
-                    <li class="dropdown" style="float:right">
-                        <a href="javascript:void(0)" class="dropbtn"><img src="logoffImage.png" id="logoffButton"></a>
-                        <div class="dropdown-content">
-                            <a href="LoginPage.html">Sign Off</a>
-                            <!--<button onclick="LogOff()">Sign Off</button>-->
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">Add Restaurant</a>
+                            <div class="dropdown-content">
+                                <a href="add-rest-review.html">Add A Review</a>
+                                <a href="add-rest-totry.html">Add Restaurant to try</a>
+                            </div>|
+                        </li>
+                        <li><a href="ListView.html">View My Past Reviews</a>|</li>
+                        <li class="dropdown" style="float:right">
+                            <a href="javascript:void(0)" class="dropbtn" ><img src="logoffImage.png" id="logoffButton"></a>
+                            <div class="dropdown-content">
+                                <a href="LoginPage.html">Sign Off</a>
+                                <!--<button onclick="LogOff()">Sign Off</button>-->
+                            </div>  
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
     <main id="restaurantsView">
-        <h3>Restaurants To Try</h3>
-        <div id="restaurantsTry"></div>
-        <br>
-        <h3>Restaurant Reviews</h3>
-        <div id="restaurantsReviewed"></div>
+        <div id="toTryDiv">
+            <h3>Restaurants To Try</h3>
+            <br>
+            <div id="restaurantsTry"></div>
+        </div>
+        <div id="haveTriedDiv">
+            <h3>Restaurant Reviews</h3>
+            <br>
+            <div id="restaurantsReviewed"></div>
+        </div>
     </main>
 
     <footer>
-        ScrumLord Technologies - <em>Login Page Test</em>
+        <em>ScrumLord Technologies</em>
 
         <script type="text/javascript" src="scripts.js"></script>
         <script type="text/javascript" src="https://mysqljs.com/mysql.js"></script>
