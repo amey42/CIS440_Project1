@@ -198,15 +198,25 @@ h5{
   color: #565656;
 }
 
-#restaurantsTry, #restaurantsReviewed
+#restaurantsView
 {
-    margin: auto;
-    float: left;
-
+    display:inline-block;
 }
 
-#rrstate, #rstate{
-  height: 4vh;
+#restaurantsTry
+{
+    margin: auto;
+    border: 2px solid black;
+}
+
+#restaurantsReviewed 
+{
+    margin: auto;
+    border: 2px solid black;
+}
+
+#rrstate, #rstate {
+    height: 4vh;
 }
 
 #rrcomments{

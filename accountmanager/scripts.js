@@ -194,7 +194,7 @@ function GetRestaurants() {
                     var restT;
                     restT = "<div class='restaurantRow' id='restT" + [j].id + "'>" +
                         "<a class='nameTag' href='javascript:LoadRestaurant(" + restaurantsTry[j].id + ")'>" +
-                        restaurantsTry[j].name + " " + restaurantsTry[j].type +
+                        restaurantsTry[j].name + " : " + restaurantsTry[j].type +
                         "</a>"
 
                     $("#restaurantsTry").append(restT);
@@ -204,7 +204,7 @@ function GetRestaurants() {
                     var restR;
                     restR = "<div class='restaurantRow' id='restR" + [k].id + "'>" +
                         "<a class='nameTag' href='javascript:LoadRestaurant(" + restaurantsReviewed[k].id + "'>" +
-                        restaurantsReviewed[k].name + " " + restaurantsReviewed[k].type +
+                        restaurantsReviewed[k].name + " : " + restaurantsReviewed[k].type +
                         "</a>"
 
                     $("#restaurantsReviewed").append(restR);
