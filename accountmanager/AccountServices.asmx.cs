@@ -343,41 +343,7 @@ namespace accountmanager
 			}
 		}
 
-		//EXAMPLE OF AN UPDATE QUERY WITH PARAMS PASSED IN
-		[WebMethod(EnableSession = true)]
-		public void UpdateAccount(string id, string uid, string pass, string firstName, string lastName, string email)
-		{
-			//WRAPPING THE WHOLE THING IN AN IF STATEMENT TO CHECK IF THEY ARE AN ADMIN!
-			if (Convert.ToInt32(Session["admin"]) == 1)
-			{
-				string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-				//this is a simple update, with parameters to pass in values
-				string sqlSelect = "update account set userid=@uidValue, pass=@passValue, firstname=@fnameValue, lastname=@lnameValue, " +
-					"email=@emailValue where id=@idValue";
-
-				MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
-				MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
-
-				sqlCommand.Parameters.AddWithValue("@uidValue", HttpUtility.UrlDecode(uid));
-				sqlCommand.Parameters.AddWithValue("@passValue", HttpUtility.UrlDecode(pass));
-				sqlCommand.Parameters.AddWithValue("@fnameValue", HttpUtility.UrlDecode(firstName));
-				sqlCommand.Parameters.AddWithValue("@lnameValue", HttpUtility.UrlDecode(lastName));
-				sqlCommand.Parameters.AddWithValue("@emailValue", HttpUtility.UrlDecode(email));
-				sqlCommand.Parameters.AddWithValue("@idValue", HttpUtility.UrlDecode(id));
-
-				sqlConnection.Open();
-				//we're using a try/catch so that if the query errors out we can handle it gracefully
-				//by closing the connection and moving on
-				try
-				{
-					sqlCommand.ExecuteNonQuery();
-				}
-				catch (Exception e)
-				{
-				}
-				sqlConnection.Close();
-			}
-		}
+        
 
 		//EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
 		[WebMethod(EnableSession = true)]
@@ -472,12 +438,11 @@ namespace accountmanager
 
 		//EXAMPLE OF A DELETE QUERY
 		[WebMethod(EnableSession = true)]
-		public void RejectAccount(string id)
+		public void DeleteRestaurant(string id)
 		{
-			if (Convert.ToInt32(Session["admin"]) == 1)
-			{
+			
 				string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-				string sqlSelect = "delete from account where id=@idValue";
+				string sqlSelect = "delete from restaurant where id=@idValue";
 
 				MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 				MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -493,9 +458,38 @@ namespace accountmanager
 				{
 				}
 				sqlConnection.Close();
-			}
+			
 		}
+        //Update Information in the restaurant table
+        [WebMethod(EnableSession = true)]
+        public void UpdateRestaurantReview(string id, string rating, string comments, string tried)
+		{
+            
+                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            //this is a simple update, with parameters to pass in values
+            string sqlSelect = "update restaurant set rating=@ratingValue, comments=@commentsValue, tried=@triedValue ";
 
+				MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+				MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+				sqlCommand.Parameters.AddWithValue("@ratingValue", HttpUtility.UrlDecode(rating));
+				sqlCommand.Parameters.AddWithValue("@commentsValue", HttpUtility.UrlDecode(comments));
+				sqlCommand.Parameters.AddWithValue("@triedValue", HttpUtility.UrlDecode(tried));
+                sqlCommand.Parameters.AddWithValue("@idValue", HttpUtility.UrlDecode(id));
+
+
+            sqlConnection.Open();
+				//we're using a try/catch so that if the query errors out we can handle it gracefully
+				//by closing the connection and moving on
+				try
+				{
+					sqlCommand.ExecuteNonQuery();
+				}
+				catch (Exception e)
+				{
+				}
+				sqlConnection.Close();
+		}
 
 	}
 }
