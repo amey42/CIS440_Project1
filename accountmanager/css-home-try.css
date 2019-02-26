@@ -249,3 +249,27 @@ h5{
 #homePics{
   height: 40vh;
 }
+
+#toTryDiv, #haveTriedDiv, #restaurantsTry, #restaurantsReviewed{
+    display: inline-block;
+  font-size: medium;
+  border-style: none;
+  vertical-align: top;
+  width: 35vw;
+  float: left;
+}
+
+#toTryDiv, #haveTriedDiv{
+  color: #76323F;
+  font-size: large;
+  font-weight: bold;
+}
+
+#restaurantsTry a, #restaurantsReviewed a{
+color: #565656;
+}
+
+#restaurantsTry a:hover, #restaurantsReviewed a:hover{
+color: #76323F;
+}
+
