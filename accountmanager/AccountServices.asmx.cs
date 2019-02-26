@@ -436,7 +436,7 @@ namespace accountmanager
 			}
 		}
 
-		//EXAMPLE OF A DELETE QUERY
+		//Delete Restaurants here
 		[WebMethod(EnableSession = true)]
 		public void DeleteRestaurant(string id)
 		{
@@ -465,7 +465,7 @@ namespace accountmanager
         public void UpdateRestaurantReview(string id, string rating, string comments, string tried)
 		{
             
-                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
             //this is a simple update, with parameters to pass in values
             string sqlSelect = "update restaurant set rating=@ratingValue, comments=@commentsValue, tried=@triedValue ";
 
